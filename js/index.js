@@ -23,6 +23,7 @@ let navLink = document.querySelectorAll('.nav-link');
 let growNavLinks = (event) => {
     event.currentTarget.style.fontSize = '2rem';
     event.stopPropagation();
+    event.preventDefault();
 }
 for(var i = 0; i < navLink.length; i++){
     navLink[i].addEventListener('click', growNavLinks);
