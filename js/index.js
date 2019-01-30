@@ -5,20 +5,20 @@ window.addEventListener('load', () => {
     alert("All aboard the Fun Bus!");
   });
 
-// Event 2
+// Event 2 - mousing over h1 adds text
 let logoHeading = document.querySelector('.logo-heading');
 logoHeading.addEventListener('mouseenter', () => {
     logoHeading.textContent = "Fun Bus is REALLY fun!";
 });
 
-// Event 3
+// Event 3 - moving mouse off h1 tag restores original text
 logoHeading.addEventListener('mouseleave', () => {
     logoHeading.textContent = "Fun Bus";
 });
 
 let navLinks = document.querySelectorAll('.nav-link');
 
-// Event 4
+// Event 4 - clicking a nav link causes text-size to increase
 
 let growNavLinks = (event) => {
     event.currentTarget.style.fontSize = '2rem';
@@ -43,14 +43,14 @@ navLinks.forEach(link => {
     link.addEventListener('mouseleave', shrinkNavLinks);
 })
 
-// Event 5
+// Event 5 - resize window generates alert
 
 // WARNING: This creates a HUGE number of alerts if you click & drag to resize!
 window.addEventListener('resize', () => {    
     alert('The window has been resized!')
 }) 
 
-// Event 6
+// Event 6 - roll mouse wheel on buttons to make them bigger
 let buttons = document.querySelectorAll('.btn');
 
 let growButton = (event) => {  
@@ -73,7 +73,7 @@ buttons.forEach(button => {
     button.addEventListener('mouseleave', shrinkButton);
 })
 
-// Event 7
+// Event 7 - pressing mouse button changes paragraph color to red
 
 let ps = document.querySelectorAll('p');
 
@@ -81,15 +81,18 @@ let pColor = (event) => event.target.style.color = 'red';
 
 ps.forEach(paragraph => paragraph.addEventListener('mousedown', pColor));
 
-// Event 8
+// Event 8 - releasing mouse restores original color
 
 let pReset = (event) => event.target.style.color = null;
 
 ps.forEach(paragraph => paragraph.addEventListener('mouseup', pReset));
 
-// Event 9
+// Event 9 - left click on an image to get an alert
 
 let images = document.querySelectorAll('img');
-console.log(images);
-
 images.forEach(image => image.addEventListener('auxclick', () => alert('You clicked on an image')))
+
+// Event 10 - double click fun bus image to make it disappear
+
+let funBusImg = document.querySelector('.intro img');
+funBusImg.addEventListener('dblclick', () => funBusImg.src = null);
