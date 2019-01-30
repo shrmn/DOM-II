@@ -16,7 +16,7 @@ logoHeading.addEventListener('mouseleave', () => {
     logoHeading.textContent = "Fun Bus";
 });
 
-let navLink = document.querySelectorAll('.nav-link');
+let navLinks = document.querySelectorAll('.nav-link');
 
 // Event 4
 
@@ -25,9 +25,9 @@ let growNavLinks = (event) => {
     event.stopPropagation();
     event.preventDefault();
 }
-for(var i = 0; i < navLink.length; i++){
-    navLink[i].addEventListener('click', growNavLinks);
-}
+navLinks.forEach(link => {
+    link.addEventListener('click', growNavLinks);
+})
 
 // Nesting click event on window to demonstrat stoppropagation
 let header = document.querySelector('header');
@@ -39,46 +39,52 @@ header.addEventListener('click', () => {
 let shrinkNavLinks = (event) => {
     event.currentTarget.style.fontSize = '1.6rem';
 }
-for(var i = 0; i < navLink.length; i++){
-    navLink[i].addEventListener('mouseleave', shrinkNavLinks);
-}
+navLinks.forEach(link => {
+    link.addEventListener('mouseleave', shrinkNavLinks);
+})
 
 // Event 5
 
 // NOTE: For some reason, the alert created by this cannot be dismissed.
 window.addEventListener('resize', () => {    
     alert('The window has been resized!')
-})
+}) 
 
 // Event 6
-let button = document.querySelectorAll('.btn');
+let buttons = document.querySelectorAll('.btn');
 
 let growButton = (event) => {  
-    event.target.style.width = '250px';
-    event.target.style.height = '60px';
+    event.currentTarget.style.width = '250px';
+    event.currentTarget.style.height = '60px';
 }
 
-for (var i = 0; i < button.length; i++) {
-    button[i].addEventListener('wheel', growButton);
-}
+buttons.forEach(button => {
+    button.addEventListener('wheel', growButton);
+})
 
 // button size reset
 
-let shrinkButton = (event) => {
+let shrinkButton = (event) => {    
     event.target.style.width = '200px';
     event.target.style.height = '45px';
 }
 
-for (var i = 0; i < button.length; i++) {
-    button[i].addEventListener('mouseleave', shrinkButton);
-}
+buttons.forEach(button => {
+    button.addEventListener('mouseleave', shrinkButton);
+})
 
 // Event 7
 
 let ps = document.querySelectorAll('p');
-for (var i = 0; i < ps.length; i++) {
-    ps[i].addEventListener('focus', (event) => {
-        console.log(event.target);
-        event.target.style.backgroundColor = 'blue';
-    });
-}
+
+let pColor = (event) => event.target.style.color = 'red';
+
+ps.forEach(paragraph => paragraph.addEventListener('mousedown', pColor));
+
+// Event 8
+
+let pReset = (event) => event.target.style.color = null;
+
+ps.forEach(paragraph => paragraph.addEventListener('mouseup', pReset));
+
+// Event 9
