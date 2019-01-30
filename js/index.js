@@ -88,3 +88,8 @@ let pReset = (event) => event.target.style.color = null;
 ps.forEach(paragraph => paragraph.addEventListener('mouseup', pReset));
 
 // Event 9
+
+let images = document.querySelectorAll('img');
+console.log(images);
+
+images.forEach(image => image.addEventListener('auxclick', () => alert('You clicked on an image')))
