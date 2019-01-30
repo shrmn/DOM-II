@@ -20,18 +20,19 @@ let navLink = document.querySelectorAll('.nav-link');
 
 // Event 4
 
-// Nesting click event on window to demonstrat stoppropagation
-
-// window.addEventListener('click', (event) => {
-//     console.log('You should never see this.');
-// })
-
 let growNavLinks = (event) => {
     event.currentTarget.style.fontSize = '2rem';
+    event.stopPropagation();
 }
 for(var i = 0; i < navLink.length; i++){
     navLink[i].addEventListener('click', growNavLinks);
 }
+
+// Nesting click event on window to demonstrat stoppropagation
+let header = document.querySelector('header');
+header.addEventListener('click', () => {
+    console.log('You should not see this if you click on a nav link.');
+})
 
 // purely for my own peace of mind, added to revert nav-link font-size
 let shrinkNavLinks = (event) => {
@@ -73,3 +74,10 @@ for (var i = 0; i < button.length; i++) {
 
 // Event 7
 
+let ps = document.querySelectorAll('p');
+for (var i = 0; i < ps.length; i++) {
+    ps[i].addEventListener('focus', (event) => {
+        console.log(event.target);
+        event.target.style.backgroundColor = 'blue';
+    });
+}
