@@ -1,44 +1,75 @@
 // Your code goes here
 
-// Event the first
+// Event 1
 window.addEventListener('load', () => {    
-    alert("All abord the Fun Bus!");
+    alert("All aboard the Fun Bus!");
   });
 
-// Event the second
+// Event 2
 let logoHeading = document.querySelector('.logo-heading');
 logoHeading.addEventListener('mouseenter', () => {
     logoHeading.textContent = "Fun Bus is REALLY fun!";
 });
 
-// Event the third
+// Event 3
 logoHeading.addEventListener('mouseleave', () => {
     logoHeading.textContent = "Fun Bus";
 });
 
 let navLink = document.querySelectorAll('.nav-link');
 
-// Event the fourth
+// Event 4
+
+// Nesting click event on window to demonstrat stoppropagation
+
+// window.addEventListener('click', (event) => {
+//     console.log('You should never see this.');
+// })
+
 let growNavLinks = (event) => {
     event.currentTarget.style.fontSize = '2rem';
 }
 for(var i = 0; i < navLink.length; i++){
-    navLink[i].addEventListener('click', growNavLinks, false);
+    navLink[i].addEventListener('click', growNavLinks);
 }
 
 // purely for my own peace of mind, added to revert nav-link font-size
-let shrinkNavLinks = function(e) {
-    e.currentTarget.style.fontSize = '1.6rem';
+let shrinkNavLinks = (event) => {
+    event.currentTarget.style.fontSize = '1.6rem';
 }
 for(var i = 0; i < navLink.length; i++){
-    navLink[i].addEventListener('mouseleave', shrinkNavLinks, false);
+    navLink[i].addEventListener('mouseleave', shrinkNavLinks);
 }
 
-// Event the fifth
+// Event 5
 
 // NOTE: For some reason, the alert created by this cannot be dismissed.
-window.addEventListener('resize', () => {
+window.addEventListener('resize', () => {    
     alert('The window has been resized!')
 })
 
-// Event the sixth
+// Event 6
+let button = document.querySelectorAll('.btn');
+
+let growButton = (event) => {  
+    event.target.style.width = '250px';
+    event.target.style.height = '60px';
+}
+
+for (var i = 0; i < button.length; i++) {
+    button[i].addEventListener('wheel', growButton);
+}
+
+// button size reset
+
+let shrinkButton = (event) => {
+    event.target.style.width = '200px';
+    event.target.style.height = '45px';
+}
+
+for (var i = 0; i < button.length; i++) {
+    button[i].addEventListener('mouseleave', shrinkButton);
+}
+
+// Event 7
+
