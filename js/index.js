@@ -45,7 +45,7 @@ navLinks.forEach(link => {
 
 // Event 5
 
-// NOTE: For some reason, the alert created by this cannot be dismissed.
+// WARNING: This creates a HUGE number of alerts if you click & drag to resize!
 window.addEventListener('resize', () => {    
     alert('The window has been resized!')
 }) 
